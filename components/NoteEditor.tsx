@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useFormState } from "react-dom";
 
 import NotePreview from "@/components/NotePreview";
-import { saveNote, delNote, IResponse } from "@/app/actions";
+import { saveNote, delNote, IResponse } from "@/actions";
 import SaveButton from "./SaveButton";
 import DeleteButton from "./DeleteButton";
 
@@ -31,7 +31,6 @@ export default function NoteEditor({
 
   useEffect(() => {
     if (saveState.errors) {
-      // 处理错误
       console.log(saveState.errors);
     }
   }, [saveState]);

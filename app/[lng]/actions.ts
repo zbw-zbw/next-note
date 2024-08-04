@@ -2,9 +2,9 @@
 
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
+import { z } from "zod";
 
 import { addNote, updateNote, deleteNote } from "@/libs/redis";
-import { z } from "zod";
 
 export interface IResponse {
   message: string;

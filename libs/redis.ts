@@ -29,17 +29,19 @@ export async function getAllNotes() {
 
 export async function addNote(data: string) {
   const uuid = Date.now().toString();
+  // @ts-ignore
   await redis.hset("notes", [uuid], data);
 
   return uuid;
 }
 
 export async function updateNote(uuid: string, data: string) {
+  // @ts-ignore
   await redis.hset("notes", [uuid], data);
 }
 
 export async function getNote(uuid: string) {
-  const note = await redis.hget("notes", uuid);
+  const note = (await redis.hget("notes", uuid)) || "";
 
   return JSON.parse(note);
 }
