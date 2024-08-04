@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useRef, useEffect, useTransition } from "react";
-import { useRouter, usePathname } from "next/navigation";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
+
 import { INoteItem } from "@/libs/redis";
 
 export default function SidebarNoteContent({
@@ -17,6 +18,7 @@ export default function SidebarNoteContent({
 }) {
   const router = useRouter();
   const pathname = usePathname();
+  const params = useSearchParams();
   const selectedId = pathname?.split("/")[1] || null;
 
   const [isPending] = useTransition();
@@ -45,7 +47,7 @@ export default function SidebarNoteContent({
       sidebarToggle.checked = true;
     }
 
-    router.push(`/note/${id}`);
+    router.push(`/note/${id}${params.size ? `?${params.toString()}` : ""}`);
   };
 
   return (

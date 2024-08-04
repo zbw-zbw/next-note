@@ -1,7 +1,5 @@
 import Redis from "ioredis";
 
-import { sleep } from ".";
-
 export interface INoteItem {
   title: string;
   content: string;
@@ -20,7 +18,6 @@ const initialData = {
 };
 
 export async function getAllNotes() {
-  await sleep(1000);
   const notes = await redis.hgetall("notes");
 
   if (Object.keys(notes).length === 0) {
