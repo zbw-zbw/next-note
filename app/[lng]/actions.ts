@@ -17,6 +17,7 @@ const schema = z.object({
 });
 
 export async function saveNote(
+  customParams: { lng: string },
   prevState: IResponse,
   formData: FormData
 ): Promise<IResponse> {
@@ -26,6 +27,7 @@ export async function saveNote(
     content: formData.get("body"),
     updateTime: new Date(),
   });
+  const { lng } = customParams;
 
   // const validated = schema.safeParse(data);
   // if (!validated.success) {
@@ -38,11 +40,11 @@ export async function saveNote(
   if (noteId) {
     updateNote(noteId, data);
     revalidatePath("/", "layout");
-    redirect(`/note/${noteId}`);
+    redirect(`/${lng}/note/${noteId}`);
   } else {
     const res = await addNote(data);
     revalidatePath("/", "layout");
-    redirect(`/note/${res}`);
+    redirect(`/${lng}/note/${res}`);
   }
 
   // return { message: "Note saved successfully" };

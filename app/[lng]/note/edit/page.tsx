@@ -6,12 +6,14 @@ export default async function EditPage({
 }: {
   params: { lng: string };
 }) {
-  const { t } = await useTranslation(params.lng);
+  const { lng } = params;
+  const { t } = await useTranslation(lng);
 
   return (
     <NoteEditor
       initialTitle="Untitled"
       initialBody=""
+      lng={lng}
       previewText={t("preview")}
       saveText={t("save")}
       deleteText={t("delete")}

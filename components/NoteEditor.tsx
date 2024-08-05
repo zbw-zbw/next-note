@@ -17,6 +17,7 @@ export default function NoteEditor({
   noteId,
   initialTitle,
   initialBody,
+  lng,
   previewText,
   saveText,
   deleteText,
@@ -24,11 +25,15 @@ export default function NoteEditor({
   noteId?: string;
   initialTitle: string;
   initialBody: string;
+  lng: string;
   previewText: string;
   saveText: string;
   deleteText: string;
 }) {
-  const [saveState, saveFormAction] = useFormState(saveNote, initialState);
+  const [saveState, saveFormAction] = useFormState(
+    saveNote.bind(null, { lng }),
+    initialState
+  );
   const [_delState, delFormAction] = useFormState(delNote, initialState);
 
   const [title, setTitle] = useState(initialTitle);

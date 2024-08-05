@@ -20,6 +20,7 @@ export default async function EditPage({
       noteId={id}
       initialTitle={note.title}
       initialBody={note.content}
+      lng={lng}
       previewText={t("preview")}
       saveText={t("done")}
       deleteText={t("delete")}

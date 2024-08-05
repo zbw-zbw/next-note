@@ -32,7 +32,9 @@ export default async function Sidebar({ lng }: { lng: string }) {
       <ToggleLanguage lng={lng} />
       <section className="sidebar-menu" role="menubar">
         <SidebarSearchField searchText={t("search")} />
-        <EditButton noteId={null}>{t("new")}</EditButton>
+        <EditButton noteId={null} lng={lng}>
+          {t("new")}
+        </EditButton>
       </section>
       <nav>
         <Suspense fallback={<NoteListSkeleton />}>

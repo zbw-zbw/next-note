@@ -27,7 +27,9 @@ export default async function Note({
             {t("lastUpdated")}
             {dayjs(updateTime).format("YYYY-MM-DD HH:mm:ss")}
           </small>
-          <EditButton noteId={noteId}>{t("edit")}</EditButton>
+          <EditButton noteId={noteId} lng={lng}>
+            {t("edit")}
+          </EditButton>
         </div>
       </div>
       <NotePreview>{content}</NotePreview>
