@@ -3,9 +3,20 @@ import dayjs from "dayjs";
 import NotePreview from "@/components/NotePreview";
 import EditButton from "@/components/EditButton";
 import { INoteItem } from "@/libs/redis";
+import { useTranslation } from "@/app/i18n";
 
-export default function Note({ noteId, note }: { noteId: string; note: INoteItem }) {
+export default async function Note({
+  noteId,
+  note,
+  lng,
+}: {
+  noteId: string;
+  note: INoteItem;
+  lng: string;
+}) {
   const { title, content, updateTime } = note;
+
+  const { t } = await useTranslation(lng);
 
   return (
     <div className="note">
@@ -13,9 +24,10 @@ export default function Note({ noteId, note }: { noteId: string; note: INoteItem
         <h1 className="note-title">{title}</h1>
         <div className="note-menu" role="menubar">
           <small className="note-updated-at" role="status">
-            Last updated on {dayjs(updateTime).format("YYYY-MM-DD HH:mm:ss")}
+            {t("lastUpdated")}
+            {dayjs(updateTime).format("YYYY-MM-DD HH:mm:ss")}
           </small>
-          <EditButton noteId={noteId}>Edit</EditButton>
+          <EditButton noteId={noteId}>{t("edit")}</EditButton>
         </div>
       </div>
       <NotePreview>{content}</NotePreview>

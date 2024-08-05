@@ -38,14 +38,14 @@ export async function saveNote(
   if (noteId) {
     updateNote(noteId, data);
     revalidatePath("/", "layout");
-    // redirect(`/note/${noteId}`);
+    redirect(`/note/${noteId}`);
   } else {
     const res = await addNote(data);
     revalidatePath("/", "layout");
-    // redirect(`/note/${res}`);
+    redirect(`/note/${res}`);
   }
 
-  return { message: "Note saved successfully" };
+  // return { message: "Note saved successfully" };
 }
 
 export async function delNote(

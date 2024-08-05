@@ -3,9 +3,11 @@ import { useFormStatus } from "react-dom";
 export default function DeleteButton({
   isDraft,
   formAction,
+  btnText,
 }: {
   isDraft: boolean;
   formAction: (payload: FormData) => void;
+  btnText: string;
 }) {
   const { pending } = useFormStatus();
 
@@ -24,7 +26,7 @@ export default function DeleteButton({
           alt=""
           role="presentation"
         />
-        Delete
+        {btnText}
       </button>
     )
   );

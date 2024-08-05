@@ -5,9 +5,11 @@ import SidebarNoteItemHeader from "./SidebarNoteItemHeader";
 export default function SidebarNoteItem({
   noteId,
   note,
+  lng,
 }: {
   noteId: string;
   note: INoteItem;
+  lng: string;
 }) {
   const { title, content = "", updateTime } = note;
 
@@ -20,6 +22,7 @@ export default function SidebarNoteItem({
           {content.substring(0, 20) || <i>(No content)</i>}
         </p>
       }
+      lng={lng}
     >
       <SidebarNoteItemHeader title={title} updateTime={updateTime} />
     </SidebarNoteItemContent>

@@ -2,8 +2,10 @@ import { useFormStatus } from "react-dom";
 
 export default function SaveButton({
   formAction,
+  btnText,
 }: {
   formAction: (payload: FormData) => void;
+  btnText: string;
 }) {
   const { pending } = useFormStatus();
 
@@ -22,7 +24,7 @@ export default function SaveButton({
         alt=""
         role="presentation"
       />
-      {pending ? "Saving" : "Done"}
+      {btnText}
     </button>
   );
 }

@@ -10,11 +10,13 @@ export default function SidebarNoteContent({
   title,
   children,
   expandedChildren,
+  lng,
 }: {
   id: string;
   title: INoteItem["title"];
   children: React.ReactNode;
   expandedChildren: React.ReactNode;
+  lng: string;
 }) {
   const router = useRouter();
   const pathname = usePathname();
@@ -47,7 +49,9 @@ export default function SidebarNoteContent({
       sidebarToggle.checked = true;
     }
 
-    router.push(`/note/${id}${params.size ? `?${params.toString()}` : ""}`);
+    router.push(
+      `/${lng}/note/${id}${params.size ? `?${params.toString()}` : ""}`
+    );
   };
 
   return (

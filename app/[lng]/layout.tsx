@@ -4,8 +4,13 @@ import { Inter } from "next/font/google";
 import "./style.css";
 
 import Sidebar from "@/components/Sidebar";
+import { defaultLocale, locales } from "@/config";
 
 const inter = Inter({ subsets: ["latin"] });
+
+export async function generateStaticParams() {
+  return locales.map(lng => ({ lng }));
+}
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,15 +19,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  params: { lng },
 }: Readonly<{
   children: React.ReactNode;
+  params: { lng: string };
 }>) {
   return (
-    <html lang="en">
+    <html lang={lng}>
       <body className={inter.className}>
         <div className="container">
           <div className="main">
-            <Sidebar />
+            <Sidebar lng={lng} />
             <section className="col note-viewer">{children}</section>
           </div>
         </div>

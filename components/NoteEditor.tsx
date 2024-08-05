@@ -17,10 +17,16 @@ export default function NoteEditor({
   noteId,
   initialTitle,
   initialBody,
+  previewText,
+  saveText,
+  deleteText,
 }: {
   noteId?: string;
   initialTitle: string;
   initialBody: string;
+  previewText: string;
+  saveText: string;
+  deleteText: string;
 }) {
   const [saveState, saveFormAction] = useFormState(saveNote, initialState);
   const [_delState, delFormAction] = useFormState(delNote, initialState);
@@ -29,11 +35,11 @@ export default function NoteEditor({
   const [body, setBody] = useState(initialBody);
   const isDraft = !noteId;
 
-  useEffect(() => {
-    if (saveState.errors) {
-      console.log(saveState.errors);
-    }
-  }, [saveState]);
+  // useEffect(() => {
+  //   if (saveState.errors) {
+  //     console.log(saveState.errors);
+  //   }
+  // }, [saveState]);
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
@@ -48,12 +54,18 @@ export default function NoteEditor({
       <form className="note-editor-form" autoComplete="off">
         <div className="note-editor-menu" role="menubar">
           <input type="hidden" name="noteId" value={noteId} />
-          <SaveButton formAction={saveFormAction} />
-          <DeleteButton isDraft={isDraft} formAction={delFormAction} />
+          <SaveButton formAction={saveFormAction} btnText={saveText} />
+          <DeleteButton
+            isDraft={isDraft}
+            formAction={delFormAction}
+            btnText={deleteText}
+          />
         </div>
         <div className="note-editor-menu">
           {saveState?.message}
-          {saveState.errors?.length && saveState?.errors[0]?.message}
+          {saveState.errors &&
+            saveState.errors.length > 0 &&
+            saveState?.errors[0]?.message}
         </div>
         <label className="offscreen" htmlFor="note-title-input">
           Enter a title for your note
@@ -77,7 +89,7 @@ export default function NoteEditor({
       </form>
       <div className="note-editor-preview">
         <div className="label label--preview" role="status">
-          Preview
+          {previewText}
         </div>
         <h1 className="note-title">{title}</h1>
         <NotePreview>{body}</NotePreview>

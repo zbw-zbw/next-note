@@ -1,6 +1,6 @@
 import { match } from "@formatjs/intl-localematcher";
 import Negotiator from "negotiator";
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 import { locales, defaultLocale } from "@/config";
 
@@ -21,18 +21,19 @@ export function middleware(request: NextRequest) {
   const pathnameHasLocale = locales.some(
     locale => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   );
+  const locale = getLocale(request);
+
+  if (pathnameHasLocale) return;
 
   if (
-    pathnameHasLocale ||
-    (publicFile.test(pathname) &&
-      excludeFile.indexOf(pathname.substring(1)) === -1)
+    publicFile.test(pathname) &&
+    excludeFile.indexOf(pathname.substring(1)) === -1
   )
     return;
 
-  const locale = getLocale(request);
   request.nextUrl.pathname = `/${locale}${pathname}`;
 
-  return Response.redirect(request.nextUrl);
+  return NextResponse.redirect(request.nextUrl);
 }
 
 export const config = {

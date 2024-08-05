@@ -2,7 +2,7 @@ import { getAllNotes } from "@/libs/redis";
 import SidebarNoteItemHeader from "@/components/SidebarNoteItemHeader";
 import SidebarNoteListFilter from "./SidebarNoteListFilter";
 
-export default async function SidebarNoteList() {
+export default async function SidebarNoteList({ lng }: { lng: string }) {
   const notes = await getAllNotes();
 
   if (Object.entries(notes).length == 0) {
@@ -25,6 +25,7 @@ export default async function SidebarNoteList() {
           ),
         };
       })}
+      lng={lng}
     />
   );
 }

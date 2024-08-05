@@ -11,9 +11,10 @@ interface IProps {
     note: INoteItem;
     header: React.ReactNode;
   }>;
+  lng: string;
 }
 
-export default function SidebarNoteListFilter({ notes }: IProps) {
+export default function SidebarNoteListFilter({ notes, lng }: IProps) {
   const searchParams = useSearchParams();
   const searchText = searchParams.get("q");
 
@@ -21,22 +22,25 @@ export default function SidebarNoteListFilter({ notes }: IProps) {
     <ul className="notes-list">
       {notes.map(noteItem => {
         const { noteId, note, header } = noteItem;
+        const { title, content = "" } = note;
 
-        if (
+        const show =
           !searchText ||
           (searchText &&
-            note.title.toLowerCase().includes(searchText.toLowerCase()))
-        ) {
+            title.toLowerCase().includes(searchText.toLowerCase()));
+
+        if (show) {
           return (
             <SidebarNoteItemContent
               key={noteId}
               id={noteId}
-              title={note.title}
+              title={title}
               expandedChildren={
                 <p className="sidebar-note-excerpt">
-                  {note.content.substring(0, 20) || <i>(No content)</i>}
+                  {content.substring(0, 20) || <i>(No content)</i>}
                 </p>
               }
+              lng={lng}
             >
               {header}
             </SidebarNoteItemContent>
