@@ -6,5 +6,6 @@
   "delete": "删除",
   "done": "保存",
   "lastUpdated": "上一次更新时间: ",
-  "preview": "预览"
+  "preview": "预览",
+  "import": "点击上传 markdown 文件"
 }

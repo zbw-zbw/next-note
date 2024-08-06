@@ -264,13 +264,13 @@ hr {
 }
 
 ul.notes-list {
-  padding: 16px 0;
+  padding: 12px 0 56px;
 }
 .notes-list li {
-  padding: 0 16px;
+  padding: 0 12px;
 }
 .notes-empty {
-  padding: 16px;
+  padding: 12px;
 }
 
 .sidebar {
@@ -283,6 +283,9 @@ ul.notes-list {
   max-width: 350px;
   min-width: 250px;
   width: 30%;
+}
+.sidebar::-webkit-scrollbar {
+  display: none;
 }
 .sidebar-header {
   letter-spacing: 0.15em;
@@ -314,7 +317,7 @@ ul.notes-list {
 }
 .sidebar-note-list-item {
   position: relative;
-  margin: 0 12px 12px;
+  margin: 0 16px 16px;
   padding: 16px;
   display: flex;
   justify-content: space-between;
@@ -324,6 +327,9 @@ ul.notes-list {
   max-height: 100px;
   transition: max-height 250ms ease-out;
   transform: scale(1);
+}
+.sidebar-note-list-item:last-child {
+  margin-bottom: 0;
 }
 .sidebar-note-list-item.note-expanded {
   max-height: 300px;
@@ -437,7 +443,7 @@ ul.notes-list {
   height: 95%;
   width: 95%;
   min-width: 400px;
-  padding: 8%;
+  padding: 62px;
   overflow-y: auto;
 }
 .note--empty-state {
@@ -477,10 +483,12 @@ ul.notes-list {
 
 .note-editor {
   background: var(--white);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1), 0px 0px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
   display: flex;
-  height: 100%;
-  width: 100%;
-  padding: 58px;
+  height: 95%;
+  width: 95%;
+  padding: 70px;
   overflow-y: auto;
 }
 .note-editor .label {
@@ -660,6 +668,20 @@ ul.notes-list {
   padding: 0;
   width: 1px;
   position: absolute;
+}
+
+.sidebar-import {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  max-width: 350px;
+  min-width: 250px;
+  height: 40px;
+  background-color: #fff;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* ---------------------------------------------------------------------------*/

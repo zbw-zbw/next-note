@@ -8,6 +8,7 @@ import SidebarSearchField from "./SidebarSearchField";
 import { useTranslation } from "@/app/i18n";
 import ToggleLanguage from "./ToggleLanguage";
 import { locales } from "@/config";
+import SidebarImport from "./SidebarImport";
 
 export default async function Sidebar({ lng }: { lng: string }) {
   const { t } = await useTranslation(lng);
@@ -40,6 +41,7 @@ export default async function Sidebar({ lng }: { lng: string }) {
         <Suspense fallback={<NoteListSkeleton />}>
           <SidebarNoteList lng={lng} />
         </Suspense>
+        <SidebarImport lng={lng} importText={t("import")} />
       </nav>
     </section>
   );

@@ -6,5 +6,6 @@
   "delete": "Delete",
   "done": "Done",
   "lastUpdated": "Last updated on: ",
-  "preview": "Preview"
+  "preview": "Preview",
+  "import": "Click to upload markdown file"
 }
