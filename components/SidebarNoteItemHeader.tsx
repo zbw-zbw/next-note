@@ -1,15 +1,15 @@
 import dayjs from "dayjs";
 
-import { INoteItem } from "@/libs/redis";
+import { INoteItem } from "@/libs/prisma";
 
 export default function SidebarNoteItemHeader({
   title,
-  updateTime,
-}: Pick<INoteItem, "title" | "updateTime">) {
+  updatedAt,
+}: Pick<INoteItem, "title" | "updatedAt">) {
   return (
     <header className="sidebar-note-header">
       <strong>{title}</strong>
-      <small>{dayjs(updateTime).format("YYYY-MM-DD HH:mm:ss")}</small>
+      <small>{dayjs(updatedAt).format("YYYY-MM-DD HH:mm:ss")}</small>
     </header>
   );
 }

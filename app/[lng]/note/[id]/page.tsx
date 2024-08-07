@@ -1,6 +1,6 @@
 import EmptyNote from "@/components/EmptyNote";
 import Note from "@/components/Note";
-import { getNote } from "@/libs/redis";
+import { getNote } from "@/libs/prisma";
 
 export default async function Page({
   params,

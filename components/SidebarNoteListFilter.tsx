@@ -3,7 +3,7 @@
 import { useSearchParams } from "next/navigation";
 
 import SidebarNoteItemContent from "@/components/SidebarNoteItemContent";
-import { INoteItem } from "@/libs/redis";
+import { INoteItem } from "@/libs/prisma";
 
 interface IProps {
   notes: Array<{

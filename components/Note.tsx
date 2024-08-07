@@ -2,8 +2,8 @@ import dayjs from "dayjs";
 
 import NotePreview from "@/components/NotePreview";
 import EditButton from "@/components/EditButton";
-import { INoteItem } from "@/libs/redis";
 import { useTranslation } from "@/app/i18n";
+import { INoteItem } from "@/libs/prisma";
 
 export default async function Note({
   noteId,
@@ -14,7 +14,7 @@ export default async function Note({
   note: INoteItem;
   lng: string;
 }) {
-  const { title, content, updateTime } = note;
+  const { title, content, updatedAt } = note;
 
   const { t } = await useTranslation(lng);
 
@@ -25,14 +25,14 @@ export default async function Note({
         <div className="note-menu" role="menubar">
           <small className="note-updated-at" role="status">
             {t("lastUpdated")}
-            {dayjs(updateTime).format("YYYY-MM-DD HH:mm:ss")}
+            {dayjs(updatedAt).format("YYYY-MM-DD HH:mm:ss")}
           </small>
           <EditButton noteId={noteId} lng={lng}>
             {t("edit")}
           </EditButton>
         </div>
       </div>
-      <NotePreview>{content}</NotePreview>
+      <NotePreview>{content || ""}</NotePreview>
     </div>
   );
 }

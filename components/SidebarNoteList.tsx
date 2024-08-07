@@ -1,4 +1,4 @@
-import { getAllNotes } from "@/libs/redis";
+import { getAllNotes } from "@/libs/prisma";
 import SidebarNoteItemHeader from "@/components/SidebarNoteItemHeader";
 import SidebarNoteListFilter from "./SidebarNoteListFilter";
 
@@ -20,7 +20,7 @@ export default async function SidebarNoteList({ lng }: { lng: string }) {
           header: (
             <SidebarNoteItemHeader
               title={noteData.title}
-              updateTime={noteData.updateTime}
+              updatedAt={noteData.updatedAt}
             />
           ),
         };

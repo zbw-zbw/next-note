@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 import { join } from "path";
 
-import { addNote } from "@/libs/redis";
+import { addNote } from "@/libs/prisma";
 
 export async function POST(request: Request) {
   const formData = await request.formData();

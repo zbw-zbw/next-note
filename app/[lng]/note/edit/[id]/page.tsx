@@ -1,7 +1,7 @@
 import { useTranslation } from "@/app/i18n";
 import EmptyNote from "@/components/EmptyNote";
 import NoteEditor from "@/components/NoteEditor";
-import { getNote } from "@/libs/redis";
+import { getNote } from "@/libs/prisma";
 
 export default async function EditPage({
   params,

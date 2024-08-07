@@ -1,5 +1,5 @@
 import SidebarNoteItemContent from "@/components/SidebarNoteItemContent";
-import { INoteItem } from "@/libs/redis";
+import { INoteItem } from "@/libs/prisma";
 import SidebarNoteItemHeader from "./SidebarNoteItemHeader";
 
 export default function SidebarNoteItem({
@@ -11,7 +11,7 @@ export default function SidebarNoteItem({
   note: INoteItem;
   lng: string;
 }) {
-  const { title, content = "", updateTime } = note;
+  const { title, content = "", updatedAt } = note;
 
   return (
     <SidebarNoteItemContent
@@ -19,12 +19,12 @@ export default function SidebarNoteItem({
       title={note.title}
       expandedChildren={
         <p className="sidebar-note-excerpt">
-          {content.substring(0, 20) || <i>(No content)</i>}
+          {content?.substring?.(0, 20) || <i>(No content)</i>}
         </p>
       }
       lng={lng}
     >
-      <SidebarNoteItemHeader title={title} updateTime={updateTime} />
+      <SidebarNoteItemHeader title={title} updatedAt={updatedAt} />
     </SidebarNoteItemContent>
   );
 }

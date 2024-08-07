@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 
-import { addNote, updateNote, deleteNote } from "@/libs/redis";
+import { addNote, updateNote, delNote as deleteNote } from "@/libs/prisma";
 
 export interface IResponse {
   message: string;

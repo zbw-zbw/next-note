@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect, useTransition } from "react";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 
-import { INoteItem } from "@/libs/redis";
+import { INoteItem } from "@/libs/prisma";
 
 export default function SidebarNoteContent({
   id,

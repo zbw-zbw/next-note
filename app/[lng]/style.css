@@ -430,6 +430,9 @@ ul.notes-list {
   right: 10px;
   top: 10px;
 }
+.sidebar-menu .edit-button {
+  width: 90px;
+}
 
 .note-viewer {
   display: flex;
