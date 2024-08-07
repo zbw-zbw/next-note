@@ -4,7 +4,8 @@ import { Inter } from "next/font/google";
 import "./style.css";
 
 import Sidebar from "@/components/Sidebar";
-import { defaultLocale, locales } from "@/config";
+import { locales } from "@/config";
+import Header from "@/components/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,6 +28,7 @@ export default function RootLayout({
   return (
     <html lang={lng}>
       <body className={inter.className}>
+        <Header />
         <div className="container">
           <div className="main">
             <Sidebar lng={lng} />

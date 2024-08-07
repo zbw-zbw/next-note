@@ -22,7 +22,8 @@
       "@/*": ["./*"],
       "@/components/*": ["components/*"],
       "@/lib/*": ["lib/*"],
-      "@/actions": ["app/[lng]/actions"]
+      "@/actions": ["app/[lng]/actions"],
+      "auth": ["./auth"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
