@@ -37,7 +37,7 @@ export default function SidebarNoteListFilter({ notes, lng }: IProps) {
               title={title}
               expandedChildren={
                 <p className="sidebar-note-excerpt">
-                  {content.substring(0, 20) || <i>(No content)</i>}
+                  {content?.substring?.(0, 20) || <i>(No content)</i>}
                 </p>
               }
               lng={lng}

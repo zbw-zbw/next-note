@@ -58,12 +58,14 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     },
     async jwt({ token, user, account }) {
       if (account && account.type === "credentials" && user) {
+        // @ts-ignore
         token.userId = user.userId;
       }
 
       return token;
     },
     async session({ session, token }) {
+      // @ts-ignore
       session.user.userId = token.userId;
 
       return session;

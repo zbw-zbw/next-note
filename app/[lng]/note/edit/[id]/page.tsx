@@ -13,7 +13,7 @@ export default async function EditPage({
 
   const { t } = await useTranslation(lng);
 
-  if (note === null) return <EmptyNote lng={lng} />;
+  if (!note) return <EmptyNote lng={lng} />;
 
   return (
     <NoteEditor

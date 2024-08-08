@@ -16,7 +16,7 @@ const initialState: IResponse = {
 export default function NoteEditor({
   noteId,
   initialTitle,
-  initialBody,
+  initialBody = "",
   lng,
   previewText,
   saveText,
@@ -24,7 +24,7 @@ export default function NoteEditor({
 }: {
   noteId?: string;
   initialTitle: string;
-  initialBody: string;
+  initialBody: string | null;
   lng: string;
   previewText: string;
   saveText: string;
@@ -37,7 +37,7 @@ export default function NoteEditor({
   const [_delState, delFormAction] = useFormState(delNote, initialState);
 
   const [title, setTitle] = useState(initialTitle);
-  const [body, setBody] = useState(initialBody);
+  const [body, setBody] = useState(initialBody || "");
   const isDraft = !noteId;
 
   // useEffect(() => {
