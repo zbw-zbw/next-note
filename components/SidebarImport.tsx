@@ -39,7 +39,7 @@ export default function SidebarImport({
       }
 
       const data = await response.json();
-      startTransition(() => router.push(`/${lng}/note/${data.uid}`));
+      startTransition(() => router.push(`/note/${data.uid}`));
       startTransition(() => router.refresh());
     } catch (error) {
       console.error("upload error:", error);

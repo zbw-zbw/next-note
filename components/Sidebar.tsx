@@ -6,7 +6,7 @@ import EditButton from "./EditButton";
 import NoteListSkeleton from "./NoteListSkeleton";
 import SidebarSearchField from "./SidebarSearchField";
 import { useTranslation } from "@/app/i18n";
-import ToggleLanguage from "./ToggleLanguage";
+// import ToggleLanguage from "./ToggleLanguage";
 import { locales } from "@/config";
 import SidebarImport from "./SidebarImport";
 
@@ -30,7 +30,7 @@ export default async function Sidebar({ lng }: { lng: string }) {
           <strong>React Notes</strong>
         </section>
       </Link>
-      <ToggleLanguage lng={lng} />
+      {/* <ToggleLanguage lng={lng} /> */}
       <section className="sidebar-menu" role="menubar">
         <SidebarSearchField searchText={t("search")} />
         <EditButton noteId={null} lng={lng}>

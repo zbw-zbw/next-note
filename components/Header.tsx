@@ -1,7 +1,6 @@
 import Link from "next/link";
 
 import { signIn, signOut, auth } from "auth";
-import { revalidatePath } from "next/cache";
 
 function SignIn() {
   return (
@@ -11,7 +10,7 @@ function SignIn() {
         await signIn();
       }}
     >
-      <button>Sign In</button>
+      <button>立即登录</button>
     </form>
   );
 }
@@ -24,7 +23,7 @@ function SignOut() {
         await signOut();
       }}
     >
-      <button>Sign Out</button>
+      <button>退出登录</button>
     </form>
   );
 }
@@ -32,14 +31,12 @@ function SignOut() {
 export default async function Header() {
   const session = await auth();
 
-  console.log("session", session);
-
   return (
-    <header style={{ display: "flex", justifyContent: "space-around" }}>
-      <Link href="/client">Client Side Component</Link>
+    <header className="page-header">
+      <Link href="/client">个人中心</Link>
       {session?.user ? (
         <span style={{ display: "flex", alignItems: "center" }}>
-          {session?.user.name}
+          <div style={{ marginRight: "10px" }}>{session?.user.name}</div>
           <SignOut />
         </span>
       ) : (

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useFormState } from "react-dom";
 
 import NotePreview from "@/components/NotePreview";
-import { saveNote, delNote, IResponse } from "@/actions";
+import { saveNote, delNote, IResponse } from "@/app/actions";
 import SaveButton from "./SaveButton";
 import DeleteButton from "./DeleteButton";
 

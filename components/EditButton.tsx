@@ -12,7 +12,7 @@ export default function EditButton({
   const isDraft = noteId == null;
 
   return (
-    <Link href={`/${lng}/note/edit/${noteId || ""}`} className="link--unstyled">
+    <Link href={`/note/edit/${noteId || ""}`} className="link--unstyled">
       <button
         className={[
           "edit-button",

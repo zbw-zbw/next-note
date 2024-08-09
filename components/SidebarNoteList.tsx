@@ -6,7 +6,7 @@ export default async function SidebarNoteList({ lng }: { lng: string }) {
   const notes = await getAllNotes();
 
   if (Object.entries(notes).length == 0) {
-    return <div className="notes-empty">{"No notes created yet!"}</div>;
+    return <div className="notes-empty">请点击上方“新建”按钮试试吧！</div>;
   }
 
   return (

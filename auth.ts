@@ -23,13 +23,16 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       async authorize(credentials) {
         // 默认情况下不对用户输入进行验证，确保使用 Zod 这样的库进行验证
         let user = null;
+
         // 登陆信息验证
         user = await getUser(
           credentials.username as string,
           credentials.password as string
         );
+
         // 密码错误
         if (user === 1) return null;
+
         // 用户注册
         if (user === 0) {
           user = await addUser(
@@ -37,9 +40,11 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             credentials.password as string
           );
         }
+
         if (!user) {
           throw new Error("User was not found and could not be created.");
         }
+
         return user;
       },
     }),

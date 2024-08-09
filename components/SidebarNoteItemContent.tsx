@@ -50,7 +50,7 @@ export default function SidebarNoteContent({
     }
 
     router.push(
-      `/${lng}/note/${id}${params.size ? `?${params.toString()}` : ""}`
+      `/note/${id}${params.size ? `?${params.toString()}` : ""}`
     );
   };
 

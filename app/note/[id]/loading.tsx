@@ -8,7 +8,7 @@ export default function NoteSkeleton() {
       <div className="note-header">
         <div
           className="note-title skeleton"
-          style={{ height: "3rem", width: "65%", marginInline: "12px 1em" }}
+          style={{ height: "3rem", width: "65%", marginInline: "12px 1em", marginTop: "1em" }}
         />
         <div
           className="skeleton skeleton--button"
