@@ -12,7 +12,7 @@ services:
     command: --default-authentication-plugin=caching_sha2_password
     restart: unless-stopped
     environment:
-      - MYSQL_ROOT_PASSWORD=zbwazbw1314
+      - MYSQL_ROOT_PASSWORD=6be29d21526a7bd0
       - MYSQL_DATABASE=notes
       - MYSQL_USER=notes
       - MYSQL_PASSWORD=RfNHKDRAbkxXJ3Yt
