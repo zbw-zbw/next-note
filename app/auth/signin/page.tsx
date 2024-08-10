@@ -1,12 +1,22 @@
 "use client";
 
-export default async function SignIn() {
-  const response = await fetch("http://localhost:3000/api/auth/csrf");
-  const { csrfToken } = await response.json();
+import { useEffect, useState } from "react";
+
+export default function SignIn() {
+  const [token, setToken] = useState("");
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch(`//${location.host}/api/auth/csrf`);
+      const { csrfToken } = await response.json();
+      setToken(csrfToken);
+    }
+    fetchData();
+  }, []);
 
   return (
     <form method="post" action="/api/auth/callback/credentials">
-      <input type="hidden" name="csrfToken" value={csrfToken} />
+      <input type="hidden" name="csrfToken" value={token} />
       <div style={{ marginTop: 10 }}>
         <label>用户名：</label>
         <input name="username" type="text" />
