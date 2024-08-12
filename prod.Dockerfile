@@ -6,11 +6,11 @@ WORKDIR /app
 
 COPY . .
 
-RUN npm i --registry=https://registry.npmmirror.com;
+RUN yarn
 
 RUN npx prisma generate
 
-RUN npm run build;
+RUN yarn build;
 
 FROM base AS runner
 
