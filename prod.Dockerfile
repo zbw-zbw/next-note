@@ -6,11 +6,11 @@ WORKDIR /app
 
 COPY . .
 
-RUN yarn
+RUN npm install
 
 RUN npx prisma generate
 
-RUN yarn build;
+RUN npm run build;
 
 FROM base AS runner
 
