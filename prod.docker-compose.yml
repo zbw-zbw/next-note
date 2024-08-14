@@ -13,6 +13,8 @@ services:
     env_file:
       - .env
       - .env.production
+    environment:
+      - NPM_CONFIG_REGISTRY=https://registry.npmmirror.com
     restart: always
     ports:
       - 3000:3000
